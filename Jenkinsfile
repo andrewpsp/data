@@ -1,12 +1,12 @@
 pipeline {
   agent {
     node {
-      label 'data-platform'
+      label 'none'
     }
 
   }
   stages {
-    stage('') {
+    stage('error') {
       steps {
         echo 'Static Testing'
       }

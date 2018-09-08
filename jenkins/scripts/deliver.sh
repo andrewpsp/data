@@ -24,5 +24,5 @@ echo $! > .pidfile
 set +x
 
 echo 'Now...'
-echo 'Visit http://smokypro.com:3000 to see data instance.'
+echo 'Visit http://attackmax.com:3000 to see data instance.'
 

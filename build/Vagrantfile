@@ -1,0 +1,47 @@
+Vagrant.configure("2") do |config|
+  clientIp = "192.168.99.101"
+  serverIp ="192.168.99.100"
+
+#config.vm.define "host1" do |host|
+#  host.vm.hostname = "base01"
+#  host.vm.box = "ubuntu/xenial64"
+#  host.vm.network "private_network", ip: serverIp
+  #host.vm.network "forwarded_port", guest: 8500, host: 8500
+
+#  hostname="base01"
+#    serverInit = %(
+#      {
+#        "advertise_addr": "#{clientIp}",
+#        "retry_join": ["#{serverIp}"],
+#        "data_dir": "/vagrant/data"
+#        }
+#    )
+
+#host.vm.provision "shell", path: "build/pro01.sh"
+
+#host.vm.provision "shell", inline: "cp /vagrant/consul.service /etc/systemd/system/consul.service; echo '#{serverInit}' > /etc/systemd/system/consul.d/init.json"
+
+
+
+#host.vm.provision "shell", inline: "service consul start"
+
+#end
+
+config.vm.provider "virtualbox" do | v |
+  v.memory = 4096 
+ end 
+
+
+config.vm.define "host2" do |host1|
+
+  host1.vm.hostname = "base02"
+  host1.vm.box = "ubuntu/xenial64"
+  host1.vm.network "private_network", ip: clientIp
+  hostname="base02"
+  host1.vm.provision "shell", path: "pro02.sh"
+  host1.vm.network "forwarded_port", guest: 8086, host: 8086
+
+
+end
+
+end

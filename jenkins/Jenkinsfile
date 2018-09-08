@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
+        sh 'git clone https://github.com/andrewpsp/Hapi-docker.git'
         sh 'npm install'
       }
     }
